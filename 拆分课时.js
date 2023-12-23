@@ -134,6 +134,7 @@ function work() {
 	let mList = [];
 	let nList = [];
 	let oList = [];
+	let pList = [];
 	for (var Ncol of Range("N2:N32")) {
 		Ncol.Font.Size=10;
 		let rowNum = Ncol.Row;
@@ -177,8 +178,9 @@ function work() {
 					nList.push("n");
 				}else if(resp == "o"){
 					oList.push("o");
+				}else if(resp == "p"){
+					pList.push("p");
 				}
-
 			}
 			
 			Lcol.Value2 = value.length
@@ -186,62 +188,72 @@ function work() {
 			Lcol.Value2 = 0;
 		}
 	}
-	Cells(34,3).Value2="1v1-白";
-	Cells(34,3).Interior.Color = RGB(255, 255, 0);
-	Cells(35,3).Value2=aList.length;
-	Cells(34,4).Value2="1v1-黑";
-	Cells(34,4).Interior.Color = RGB(146, 208, 80);
-	Cells(35,4).Value2=cList.length;
-	Cells(34,5).Value2="1v2-白";
-	Cells(34,5).Interior.Color = RGB(255, 238, 173);
-	Cells(35,5).Value2=bList.length;
-	Cells(34,6).Value2="1v2-黑";
-	Cells(34,6).Interior.Color = RGB(153, 221, 255);
-	Cells(35,6).Value2=dList.length;
+	Cells(36,3).Value2="1v1-白";
+	Cells(36,3).Interior.Color = RGB(255, 255, 0);
+	Cells(37,3).Value2=aList.length;
+	Cells(36,4).Value2="1v1-黑";
+	Cells(36,4).Interior.Color = RGB(146, 208, 80);
+	Cells(37,4).Value2=cList.length;
+	Cells(36,5).Value2="1v2-白";
+	Cells(36,5).Interior.Color = RGB(255, 238, 173);
+	Cells(37,5).Value2=bList.length;
+	Cells(36,6).Value2="1v2-黑";
+	Cells(36,6).Interior.Color = RGB(153, 221, 255);
+	Cells(37,6).Value2=dList.length;
 	
-	Cells(36,3).Value2="1v1-白KEP/PET";
-	Cells(36,3).Interior.Color = RGB(255, 156, 153);
-	Cells(37,3).Value2=eList.length;
-	Cells(36,4).Value2="1v1-黑KEP/PET";
-	Cells(36,4).Interior.Color = RGB(158, 30, 26);
-	Cells(36,4).Font.Color = RGB(255, 255, 255);
-	Cells(37,4).Value2=gList.length;
-	Cells(36,5).Value2="1v2-白KEP/PET";
-	Cells(36,5).Interior.Color = RGB(255, 186, 132);
-	Cells(37,5).Value2=fList.length;
-	Cells(36,6).Value2="1v2-黑KEP/PET";
-	Cells(36,6).Interior.Color = RGB(184, 96, 20);
-	Cells(36,6).Font.Color = RGB(255, 255, 255);
-	Cells(37,6).Value2=hList.length;
-	
-	Cells(38,3).Value2="Class-1v2";
-	Cells(38,3).Interior.Color = RGB(154, 56, 215);
-	Cells(38,3).Font.Color = RGB(255, 255, 255);
-	Cells(38,3).Font.Bold = true;
-	Cells(39,3).Value2=iList.length;
-	Cells(38,4).Value2="Class-1v3";
-	Cells(38,4).Interior.Color = RGB(245, 196, 0);
-	Cells(39,4).Value2=jList.length;
-	Cells(38,5).Value2="Class-1v4";
-	Cells(38,5).Interior.Color = RGB(197, 202, 211);
-	Cells(39,5).Value2=kList.length;
-	Cells(38,6).Value2="Class-1v5";
-	Cells(38,6).Interior.Color = RGB(255, 0, 0);
+	Cells(38,3).Value2="1v1-白KEP/PET";
+	Cells(38,3).Interior.Color = RGB(255, 156, 153);
+	Cells(39,3).Value2=eList.length;
+	Cells(38,4).Value2="1v1-黑KEP/PET";
+	Cells(38,4).Interior.Color = RGB(158, 30, 26);
+	Cells(38,4).Font.Color = RGB(255, 255, 255);
+	Cells(39,4).Value2=gList.length;
+	Cells(38,5).Value2="1v2-白KEP/PET";
+	Cells(38,5).Interior.Color = RGB(255, 186, 132);
+	Cells(39,5).Value2=fList.length;
+	Cells(38,6).Value2="1v2-黑KEP/PET";
+	Cells(38,6).Interior.Color = RGB(184, 96, 20);
 	Cells(38,6).Font.Color = RGB(255, 255, 255);
-	Cells(38,6).Font.Bold = true;
-	Cells(39,6).Value2=lList.length;
+	Cells(39,6).Value2=hList.length;
 	
-	Cells(40,3).Value2="2小时Class-1v2";
-	Cells(40,3).Interior.Color = RGB(145, 156, 205);
-	Cells(41,3).Value2=mList.length;
-	Cells(40,4).Value2="2小时Class-1v3";
-	Cells(40,4).Interior.Color = RGB(209, 131, 179)
-	Cells(41,4).Value2=nList.length;
-	Cells(40,5).Value2="2小时Class-1v4";
-	Cells(40,5).Interior.Color = RGB(0, 255, 135);
-	Cells(41,5).Value2=oList.length;
+	Cells(40,3).Value2="Class-1v2";
+	Cells(40,3).Interior.Color = RGB(154, 56, 215);
+	Cells(40,3).Font.Color = RGB(255, 255, 255);
+	Cells(40,3).Font.Bold = true;
+	Cells(41,3).Value2=iList.length;
+	Cells(40,4).Value2="Class-1v3";
+	Cells(40,4).Interior.Color = RGB(245, 196, 0);
+	Cells(41,4).Value2=jList.length;
+	Cells(40,5).Value2="Class-1v4";
+	Cells(40,5).Interior.Color = RGB(197, 202, 211);
+	Cells(41,5).Value2=kList.length;
+	Cells(40,6).Value2="Class-1v5";
+	Cells(40,6).Interior.Color = RGB(255, 0, 0);
+	Cells(40,6).Font.Color = RGB(255, 255, 255);
+	Cells(40,6).Font.Bold = true;
+	Cells(41,6).Value2=lList.length;
 	
-	Range("C34:F41").Select();
+	Cells(42,3).Value2="2小时Class-1v2";
+	Cells(42,3).Interior.Color = RGB(145, 156, 205);
+	Cells(43,3).Value2=mList.length;
+	Cells(42,4).Value2="2小时Class-1v3";
+	Cells(42,4).Interior.Color = RGB(209, 131, 179)
+	Cells(43,4).Value2=nList.length;
+	Cells(42,5).Value2="2小时Class-1v4";
+	Cells(42,5).Interior.Color = RGB(0, 255, 135);
+	Cells(43,5).Value2=oList.length;
+	Cells(42,6).Interior.Color = RGB(0,163,245);
+	Cells(42,6).Font.Color = RGB(255, 0, 0);
+	Cells(42,6).Value2="1小时1v1";
+	Cells(42,6).Font.Bold = true;
+	Cells(43,6).Value2=pList.length;
+	
+	Cells(42,7).Value2="当月总计";
+	Cells(42,7).Font.Bold = true;
+	Cells(43,7).Value2=aList.length+bList.length+cList.length+dList.length+eList.length+fList.length+gList.length+hList.length+iList.length+jList.length+kList.length
+		+lList.length+mList.length+nList.length+oList.length+pList.length;
+	
+	Range("C36:G43").Select();
 	Selection.HorizontalAlignment = xlHAlignCenter;
 	Selection.Font.Size=10;
 }
@@ -288,6 +300,13 @@ function setValueAndColor(value, rowNum, colNum) {
 	col.HorizontalAlignment = xlHAlignCenter;
 
 	if ((value.match(/&/g) || []).length === 0) {
+		if(value.indexOf("1小时") > -1){
+			//1对1 1小时
+			col.Interior.Color = RGB(0,163,245);
+			col.Font.Color = RGB(255, 0, 0);
+			col.Font.Bold = true;
+			return "p";
+		}
 		
 		if (value.indexOf("PET") > -1 || value.indexOf("KET") > -1) {
 
@@ -404,5 +423,4 @@ function petKetBlack1v2(col) {
 	col.Font.Bold = true;
 
 }
-
 
