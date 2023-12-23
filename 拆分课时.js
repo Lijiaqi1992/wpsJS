@@ -14,6 +14,7 @@ function 一键拆课时()
 		}
 		if(i==4 || i== 6 || i== 9 || i== 11){
 			Selection.Rows.Item(32).Delete();
+			Selection.Rows.Item(33).Delete();
 		}
 	}
 }
