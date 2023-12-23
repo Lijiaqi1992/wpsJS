@@ -107,6 +107,7 @@ function 边框()
 
 
 
+
 function work() {
 	for (let k = 1; k <= 31; k++) {
 		let Acol = Cells(k+1, 1);
@@ -118,7 +119,21 @@ function work() {
 		cell.Font.Size=10;
 		cell.HorizontalAlignment = xlHAlignCenter;
 	}
-
+	let aList = [];
+	let bList = [];
+	let cList = [];
+	let dList = [];
+	let eList = [];
+	let fList = [];
+	let gList = [];
+	let hList = [];
+	let iList = [];
+	let jList = [];
+	let kList = [];
+	let lList = [];
+	let mList = [];
+	let nList = [];
+	let oList = [];
 	for (var Ncol of Range("N2:N32")) {
 		Ncol.Font.Size=10;
 		let rowNum = Ncol.Row;
@@ -131,7 +146,38 @@ function work() {
 
 			for (var i = 0; i < value.length; i++) {
 
-				setValueAndColor(value[i], rowNum, (colNum + 1 + i))
+				let resp = setValueAndColor(value[i], rowNum, (colNum + 1 + i));
+				if(resp == "a"){
+					aList.push("a");
+				}else if(resp == "b"){
+					bList.push("b");
+				}else if(resp == "c"){
+					cList.push("c");
+				}else if(resp == "d"){
+					dList.push("d");
+				}else if(resp == "e"){
+					eList.push("e");
+				}else if(resp == "f"){
+					fList.push("f");
+				}else if(resp == "g"){
+					gList.push("g");
+				}else if(resp == "h"){
+					hList.push("h");
+				}else if(resp == "i"){
+					iList.push("i");
+				}else if(resp == "j"){
+					jList.push("j");
+				}else if(resp == "k"){
+					kList.push("k");
+				}else if(resp == "l"){
+					lList.push("l");
+				}else if(resp == "m"){
+					mList.push("m");
+				}else if(resp == "n"){
+					nList.push("n");
+				}else if(resp == "o"){
+					oList.push("o");
+				}
 
 			}
 			
@@ -140,6 +186,64 @@ function work() {
 			Lcol.Value2 = 0;
 		}
 	}
+	Cells(34,3).Value2="1v1-白";
+	Cells(34,3).Interior.Color = RGB(255, 255, 0);
+	Cells(35,3).Value2=aList.length;
+	Cells(34,4).Value2="1v1-黑";
+	Cells(34,4).Interior.Color = RGB(146, 208, 80);
+	Cells(35,4).Value2=cList.length;
+	Cells(34,5).Value2="1v2-白";
+	Cells(34,5).Interior.Color = RGB(255, 238, 173);
+	Cells(35,5).Value2=bList.length;
+	Cells(34,6).Value2="1v2-黑";
+	Cells(34,6).Interior.Color = RGB(153, 221, 255);
+	Cells(35,6).Value2=dList.length;
+	
+	Cells(36,3).Value2="1v1-白KEP/PET";
+	Cells(36,3).Interior.Color = RGB(255, 156, 153);
+	Cells(37,3).Value2=eList.length;
+	Cells(36,4).Value2="1v1-黑KEP/PET";
+	Cells(36,4).Interior.Color = RGB(158, 30, 26);
+	Cells(36,4).Font.Color = RGB(255, 255, 255);
+	Cells(37,4).Value2=gList.length;
+	Cells(36,5).Value2="1v2-白KEP/PET";
+	Cells(36,5).Interior.Color = RGB(255, 186, 132);
+	Cells(37,5).Value2=fList.length;
+	Cells(36,6).Value2="1v2-黑KEP/PET";
+	Cells(36,6).Interior.Color = RGB(184, 96, 20);
+	Cells(36,6).Font.Color = RGB(255, 255, 255);
+	Cells(37,6).Value2=hList.length;
+	
+	Cells(38,3).Value2="Class-1v2";
+	Cells(38,3).Interior.Color = RGB(154, 56, 215);
+	Cells(38,3).Font.Color = RGB(255, 255, 255);
+	Cells(38,3).Font.Bold = true;
+	Cells(39,3).Value2=iList.length;
+	Cells(38,4).Value2="Class-1v3";
+	Cells(38,4).Interior.Color = RGB(245, 196, 0);
+	Cells(39,4).Value2=jList.length;
+	Cells(38,5).Value2="Class-1v4";
+	Cells(38,5).Interior.Color = RGB(197, 202, 211);
+	Cells(39,5).Value2=kList.length;
+	Cells(38,6).Value2="Class-1v5";
+	Cells(38,6).Interior.Color = RGB(255, 0, 0);
+	Cells(38,6).Font.Color = RGB(255, 255, 255);
+	Cells(38,6).Font.Bold = true;
+	Cells(39,6).Value2=lList.length;
+	
+	Cells(40,3).Value2="2小时Class-1v2";
+	Cells(40,3).Interior.Color = RGB(145, 156, 205);
+	Cells(41,3).Value2=mList.length;
+	Cells(40,4).Value2="2小时Class-1v3";
+	Cells(40,4).Interior.Color = RGB(209, 131, 179)
+	Cells(41,4).Value2=nList.length;
+	Cells(40,5).Value2="2小时Class-1v4";
+	Cells(40,5).Interior.Color = RGB(0, 255, 135);
+	Cells(41,5).Value2=oList.length;
+	
+	Range("C34:F41").Select();
+	Selection.HorizontalAlignment = xlHAlignCenter;
+	Selection.Font.Size=10;
 }
 
 function setValueAndColor(value, rowNum, colNum) {
@@ -184,17 +288,18 @@ function setValueAndColor(value, rowNum, colNum) {
 	col.HorizontalAlignment = xlHAlignCenter;
 
 	if ((value.match(/&/g) || []).length === 0) {
-
+		
 		if (value.indexOf("PET") > -1 || value.indexOf("KET") > -1) {
 
 			//1对1 PET/KET
 			wb == "白" ? col.Interior.Color = RGB(255, 156, 153) : petKetBlack1v1(col);
+			return wb == "白"? "e":"g";
 
 		} else {
 
 			//1对1 普通
-			wb == "白" ? col.Interior.Color = RGB(255, 255, 0) : col.Interior.Color = RGB(146, 208, 80)
-
+			wb == "白" ? col.Interior.Color = RGB(255, 255, 0) : col.Interior.Color = RGB(146, 208, 80);
+			return wb == "白"?"a":"c";
 		}
 
 	} else if (value.indexOf("Class") < 0 && (value.match(/&/g) || []).length === 1) {
@@ -203,11 +308,12 @@ function setValueAndColor(value, rowNum, colNum) {
 
 			//1对2 PET/KET
 			wb == "白" ? col.Interior.Color = RGB(255, 186, 132) : petKetBlack1v2(col);
-
+			return wb == "白"?"f":"h";
 		} else {
 
 			//1对2 普通
-			wb == "白" ? col.Interior.Color = RGB(255, 238, 173) : col.Interior.Color = RGB(153, 221, 255)
+			wb == "白" ? col.Interior.Color = RGB(255, 238, 173) : col.Interior.Color = RGB(153, 221, 255);
+			return wb == "白"?"b":"d";
 
 		}
 
@@ -217,7 +323,7 @@ function setValueAndColor(value, rowNum, colNum) {
 		//班课2小时1v4
 		col.Interior.Color = RGB(0, 255, 135)
 
-		return;
+		return "o";
 
 	} else if (value.indexOf("Class") > -1 
 		&& value.indexOf("2小时") > -1 &&  (value.match(/&/g) || []).length === 2) {
@@ -225,7 +331,7 @@ function setValueAndColor(value, rowNum, colNum) {
 		//班课2小时1v3
 		col.Interior.Color = RGB(209, 131, 179)
 
-		return;
+		return "n";
 
 	} else if (value.indexOf("Class") > -1 
 		&& value.indexOf("2小时") > -1 &&  (value.match(/&/g) || []).length === 1) {
@@ -233,7 +339,7 @@ function setValueAndColor(value, rowNum, colNum) {
 		//班课2小时1v2
 		col.Interior.Color = RGB(145, 156, 205)
 
-		return;
+		return "m";
 
 	} else if (value.indexOf("Class") > -1 && (value.match(/&/g) || []).length === 1) {
 
@@ -244,6 +350,7 @@ function setValueAndColor(value, rowNum, colNum) {
 		col.Font.Bold = true;
 
 		col.Value2 = value + "-【2人】";
+		return "i";
 
 	} else if (value.indexOf("Class") > -1 && (value.match(/&/g) || []).length === 2) {
 
@@ -254,6 +361,7 @@ function setValueAndColor(value, rowNum, colNum) {
 
 		col.Font.Color = RGB(255, 255, 255);
 		col.Font.Bold = true;
+		return "j";
 
 	} else if (value.indexOf("Class") > -1 && (value.match(/&/g) || []).length === 3) {
 
@@ -261,14 +369,16 @@ function setValueAndColor(value, rowNum, colNum) {
 		col.Interior.Color = RGB(197, 202, 211);
 
 		col.Value2 = value + "-【4人】";
+		return "k";
 
 	} else if (value.indexOf("Class") > -1 && (value.match(/&/g) || []).length === 4) {
 
 		//班课1v5
 		col.Interior.Color = RGB(255, 0, 0);
 		col.Font.Color = RGB(255, 255, 255);
-		col.Value2 = value + "-【5人】";
 		col.Font.Bold = true;
+		col.Value2 = value + "-【5人】";
+		return "l";
 
 	}
 
