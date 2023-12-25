@@ -5,12 +5,13 @@ function 一键拆课时()
 {
 	for(var i = 1 ; i<=12; i++){
 		Sheets.Item(i).Activate();
+		删除汇总行(i);
 		work();
 		格式调整2();
 		边框();
 		if(i == 2){
-			Selection.Rows.Item(31).Delete();
 			Selection.Rows.Item(32).Delete();
+			Selection.Rows.Item(33).Delete();
 		}
 		if(i==4 || i== 6 || i== 9 || i== 11){
 			Selection.Rows.Item(32).Delete();
@@ -27,15 +28,15 @@ function 格式调整2()
 {
 	Columns.Item("A:B").Select();
 	Selection.ColumnWidth = 7.370370;
-	Columns.Item("C:K").Select();
+	Columns.Item("C:M").Select();
 	Selection.ColumnWidth = 21.814816;
-	Columns.Item("L:M").Select();
+	Columns.Item("N:O").Select();
 	Selection.ColumnWidth = 3.851852;
 	ActiveWindow.ScrollColumn = 10;
-	Columns.Item("N:N").Select();
+	Columns.Item("P:P").Select();
 	Selection.ColumnWidth = 69.592590;
 	ActiveWindow.ScrollColumn = 1;
-	Columns.Item("C:K").Select();
+	Columns.Item("C:M").Select();
 	Selection.ColumnWidth = 19.592592;
 	Rows.Item("2:18").Select();
 	ActiveWindow.ScrollRow = 3;
@@ -72,7 +73,7 @@ function 格式调整2()
 function 边框()
 {
 	ActiveWindow.ScrollRow = 29;
-	Range("A1:N32").Select();
+	Range("A1:P32").Select();
 	(obj=>{
 		obj.Weight = xlThin;
 		obj.LineStyle = xlContinuous;
@@ -106,7 +107,31 @@ function 边框()
 
 }
 
+/**
+ * shanchu Macro
+ * 宏由 35014 录制，时间: 2023/12/24
+ */
+function 删除汇总行(yue)
+{
+	
+	
+		if(yue == 2){
+			Rows.Item("31:48").Select();
+			ActiveWindow.ScrollRow = 31;
+			Selection.Delete(xlShiftUp);
+		}else 
+		if(yue==4 || yue== 6 || yue== 9 || yue== 11){
+			Rows.Item("32:48").Select();
+			ActiveWindow.ScrollRow = 31;
+			Selection.Delete(xlShiftUp);
+		}else{
+			console.log(yue)
+			Rows.Item("33:48").Select();
+			ActiveWindow.ScrollRow = 31;
+			Selection.Delete(xlShiftUp);
+		}
 
+}
 
 
 function work() {
@@ -114,7 +139,7 @@ function work() {
 		let Acol = Cells(k+1, 1);
 		Acol.Value2=k;
 	}
-	for (var cell of Range("C2:K32")) {
+	for (var cell of Range("C2:M32")) {
 		cell.Value2 = "NA";
 		cell.Interior.Color = RGB(255, 255, 255);
 		cell.Font.Size=10;
@@ -136,15 +161,15 @@ function work() {
 	let nList = [];
 	let oList = [];
 	let pList = [];
-	for (var Ncol of Range("N2:N32")) {
-		Ncol.Font.Size=10;
-		let rowNum = Ncol.Row;
+	for (var Pcol of Range("P2:P32")) {
+		Pcol.Font.Size=10;
+		let rowNum = Pcol.Row;
 
-		let colNum = Ncol.Column;
-		let Lcol = Cells(rowNum, 12);
-		if (Ncol.Value2 != null) {
+		let colNum = Pcol.Column;
+		let Ncol = Cells(rowNum, 14);
+		if (Pcol.Value2 != null) {
 
-			let value = Ncol.Value2.split("\n");
+			let value = Pcol.Value2.split("\n");
 
 			for (var i = 0; i < value.length; i++) {
 
@@ -184,9 +209,9 @@ function work() {
 				}
 			}
 			
-			Lcol.Value2 = value.length
+			Ncol.Value2 = value.length
 		}else{
-			Lcol.Value2 = 0;
+			Ncol.Value2 = 0;
 		}
 	}
 	Cells(36,3).Value2="1v1-白";
@@ -269,18 +294,22 @@ function setValueAndColor(value, rowNum, colNum) {
 		colNum = 4;
 	}else if(time > 1100 && time <=1230){
 		colNum = 5;
-	}else if(time > 1230 && time <=1400){
+	}else if(time > 1230 && time <=1330){
 		colNum = 6; //F列
-	}else if(time > 1400 && time <=1600){
-		colNum = 7;
+	}else if(time > 1330 && time <=1400){
+		colNum = 7; //G
+	}else if(time > 1400 && time <=1500){
+		colNum = 8; //H
+	}else if(time > 1500 && time <=1600){
+		colNum = 9; //I
 	}else if(time > 1600 && time <=1730){
-		colNum = 8;
+		colNum = 10;
 	}else if(time > 1730 && time <=1900){
-		colNum = 9;
+		colNum = 11;
 	}else if(time > 1900 && time <=1930){
-		colNum = 10; //J列
-	}else if(time > 1930 && time <=2100){
-		colNum = 11; //K列
+		colNum = 12; //L列
+	}else if(time > 1930 && time <=2115){
+		colNum = 13; //M列
 	}else {
 		//>2100轮空，数据落在数据源（N列）后边
 	}
@@ -341,7 +370,8 @@ function setValueAndColor(value, rowNum, colNum) {
 		&& value.indexOf("2小时") > -1 &&  (value.match(/&/g) || []).length === 3) {
 
 		//班课2小时1v4
-		col.Interior.Color = RGB(0, 255, 135)
+		col.Interior.Color = RGB(0, 255, 135);
+		col.Value2 = value + "-【4人】";
 
 		return "o";
 
@@ -349,7 +379,8 @@ function setValueAndColor(value, rowNum, colNum) {
 		&& value.indexOf("2小时") > -1 &&  (value.match(/&/g) || []).length === 2) {
 
 		//班课2小时1v3
-		col.Interior.Color = RGB(209, 131, 179)
+		col.Interior.Color = RGB(209, 131, 179);
+		col.Value2 = value + "-【3人】";
 
 		return "n";
 
@@ -357,7 +388,8 @@ function setValueAndColor(value, rowNum, colNum) {
 		&& value.indexOf("2小时") > -1 &&  (value.match(/&/g) || []).length === 1) {
 
 		//班课2小时1v2
-		col.Interior.Color = RGB(145, 156, 205)
+		col.Interior.Color = RGB(145, 156, 205);
+		col.Value2 = value + "-【2人】";
 
 		return "m";
 
